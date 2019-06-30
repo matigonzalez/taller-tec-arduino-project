@@ -20,11 +20,19 @@ class Bluetooth {
             'powershell',
             `${this.varName}= new-Object System.IO.Ports.SerialPort ${this.portName},${this.portNumber},None,8,one`,
             `${this.varName}.open()`,
-            `${this.varName}.Write(${content})`,
+            `${this.varName}.Write('${content}')`,
             `${this.varName}.ReadLine()`,
             `${this.varName}.close()`
         ].join(';'));
-        //acá hacer loop para leer el buffer entero
+    }
+
+    dummyChannel(content = ''){     
+        const cmd = [
+            'powershell',
+            'sleep 1',
+            `echo '${content}:${Math.random() < 0.8 ? 1 : 0}'`
+        ].join(';');  
+        return this.runCommand(cmd);
     }
 
     runCommand(command){

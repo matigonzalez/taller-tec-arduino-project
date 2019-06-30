@@ -53,8 +53,30 @@ body, html {
     font-size: 9px;
 }
 .text-blue{
-    color: #1288fd;
+    color: #101e10;
 }
 .text-darkblue{
     color: #4e6072;;
+}
+/* Sensors */
+.sensor {    
+    position: relative;
+    height: 150px;
+}
+.sensor::before, .active-sensor::before {
+	position: absolute;
+	right: 5px;
+	bottom: 2px;
+	font-size: 8px;
+}
+.sensor::before {
+	content: "Off";
+	color: #f92a06;
+}
+.active-sensor::before {
+	content: "On";
+	color: #59f906;
+}
+.active-sensor {
+	background: #1c2f1c;
 }
